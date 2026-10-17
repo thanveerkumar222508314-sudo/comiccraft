@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}
+ComicCraft - Preview
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="preview-header">
+
+
+    <div>
+
+        <p class="eyebrow">
+            YOUR GENERATED COMIC
+        </p>
+
+
+        <h1>
+            Comic Preview
+        </h1>
+
+
+        <p class="subtitle">
+
+            Review your generated comic
+            and download the PDF.
+
+        </p>
+
+    </div>
+
+
+    <a
+        class="secondary"
+        href="/download/{{ pdf_filename }}"
+    >
+
+        Download PDF
+
+    </a>
+
+
+</section>
+
+
+<section class="comic-grid">
+
+
+{% for panel in layout %}
+
+
+<article class="panel card">
+
+
+    <div class="panel-heading">
+
+        <span>
+            Panel {{ panel.panel_number }}
+        </span>
+
+
+        <h2>
+            {{ panel.title }}
+        </h2>
+
+    </div>
+
+
+    <img
+        class="panel-image"
+        src="{{ panel.image_url }}"
+        alt="Comic panel {{ panel.panel_number }}"
+    >
+
+
+    <p class="scene">
+
+        <em>
+            {{ panel.scene_description }}
+        </em>
+
+    </p>
+
+
+    <div class="story-box">
+
+
+        <h3>
+            Caption
+        </h3>
+
+
+        <p>
+            {{ panel.caption }}
+        </p>
+
+
+        <h3>
+            Narration
+        </h3>
+
+
+        <p>
+            {{ panel.narration }}
+        </p>
+
+
+        {% if panel.dialogue %}
+
+        <h3>
+            Dialogue
+        </h3>
+
+
+        <p class="dialogue">
+
+            "{{ panel.dialogue }}"
+
+        </p>
+
+        {% endif %}
+
+
+    </div>
+
+
+    <details>
+
+        <summary>
+            Image Prompt
+        </summary>
+
+
+        <p>
+            {{ panel.image_prompt }}
+        </p>
+
+    </details>
+
+
+</article>
+
+
+{% endfor %}
+
+
+</section>
+
+
+<div class="bottom-actions">
+
+
+    <a
+        class="primary"
+        href="/download/{{ pdf_filename }}"
+    >
+
+        Download Your Comic as PDF
+
+    </a>
+
+
+    <a
+        class="secondary"
+        href="/"
+    >
+
+        Create Another Comic
+
+    </a>
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}
+ComicCraft - Create
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+
+    <div class="hero-copy">
+
+        <p class="eyebrow">
+            AI COMIC STORY CREATOR
+        </p>
+
+
+        <h1>
+            Turn your idea into a
+            <span>5-panel comic.</span>
+        </h1>
+
+
+        <p class="subtitle">
+
+            Describe your story and let AI
+            create the storyline, dialogue,
+            illustrations and PDF.
+
+        </p>
+
+    </div>
+
+
+    {% if error %}
+
+    <div class="alert">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+
+    <form
+        class="card form-card"
+        method="post"
+        action="/generate"
+        id="comic-form"
+    >
+
+
+        <label>
+
+            Story Prompt
+
+            <textarea
+                name="story_prompt"
+                required
+                maxlength="3000"
+                placeholder="Example: A brave fox explores an enchanted forest and discovers a mysterious portal."
+            ></textarea>
+
+        </label>
+
+
+        <div class="grid-2">
+
+
+            <label>
+
+                Main Character Name
+
+                <input
+                    name="character_name"
+                    required
+                    maxlength="100"
+                    placeholder="Lumi"
+                >
+
+            </label>
+
+
+            <label>
+
+                Setting
+
+                <select name="setting">
+
+                    <option>
+                        Forest
+                    </option>
+
+                    <option>
+                        School
+                    </option>
+
+                    <option>
+                        Space
+                    </option>
+
+                    <option>
+                        City
+                    </option>
+
+                    <option>
+                        Enchanted Kingdom
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Story Tone
+
+                <select name="tone">
+
+                    <option>
+                        Light-hearted
+                    </option>
+
+                    <option>
+                        Dramatic
+                    </option>
+
+                    <option>
+                        Poetic
+                    </option>
+
+                    <option>
+                        Funny
+                    </option>
+
+                    <option>
+                        Adventure
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Art Style
+
+                <select name="art_style">
+
+                    <option>
+                        Anime
+                    </option>
+
+                    <option>
+                        Comic Book
+                    </option>
+
+                    <option>
+                        Pixel Art
+                    </option>
+
+                    <option>
+                        Realistic
+                    </option>
+
+                    <option>
+                        Watercolor
+                    </option>
+
+                </select>
+
+            </label>
+
+
+        </div>
+
+
+        <button
+            class="primary"
+            type="submit"
+            id="generate-btn"
+        >
+
+            ✨ Generate Comic
+
+        </button>
+
+
+        <p class="hint">
+
+            Generation may take several minutes
+            because five AI illustrations are generated.
+
+        </p>
+
+
+    </form>
+
+
+</section>
+
+{% endblock %}
